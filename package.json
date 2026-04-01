@@ -11,15 +11,17 @@
   },
   "scripts": {
     "build": "tsc && npm run build:backend && npm run build:server",
-      "build:server": "babel server.js --out-dir dist --extensions .js",
+    "build:server": "babel server.js --out-dir dist --extensions .js",
     "build:backend": "babel src --out-dir dist/src --extensions .js,.jsx,.ts,.tsx --ignore src/frontend/**",
     "start": "node dist/server.js",
     "clean": "rm -rf .turbo node_modules dist",
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
-    "vite": "vite --host"
+    "vite": "vite --host",
+    "postbuild": "cpx \"src/emails/contracts/data/**/*.json\" dist/src/emails/contracts/data"
   },
   "dependencies": {
+    "cpx": "^1.5.0",
     "@babel/cli": "^7.28.6",
     "@babel/core": "^7.29.0",
     "@babel/node": "^7.29.0",
