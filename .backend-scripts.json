@@ -1,0 +1,10 @@
+// Transpile all src (including JSX/ESM) to dist, then run server from dist
+{
+  "scripts": {
+    "build:backend": "babel src --out-dir dist/src --extensions .js,.jsx,.ts,.tsx",
+    "build:env": "babel env.js --out-dir dist --extensions .js",
+    "build:server": "babel server.js --out-dir dist --extensions .js",
+    "build": "npm run build:backend && npm run build:env && npm run build:server",
+    "start": "node dist/server.js"
+  }
+}
